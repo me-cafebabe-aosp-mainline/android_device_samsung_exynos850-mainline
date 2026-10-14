@@ -1,0 +1,2 @@
+# Block devices
+/dev/block/by-name/userdata u:object_r:userdata_block_device:s0
