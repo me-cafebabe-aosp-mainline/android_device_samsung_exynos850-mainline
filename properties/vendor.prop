@@ -1,0 +1,19 @@
+# APEX TODO: CLean up this mess
+# ueventd is too slow to create dm-verity links within the 1s default
+apexd.config.dm_create.timeout=10000
+
+# Graphics TODO: Clean up this mess
+# Display (exynos-drm) and GPU (panfrost) are separate DRM devices. Allocating
+# on the display's primary node makes Mesa use kmsro: panfrost renders, and
+# scanout buffers come from exynos-drm, mapped through the DPU IOMMU, so
+# drm_hwcomposer can put window buffers straight on the DECON planes. The
+# display's card number depends on the probe order, so let gralloc find it.
+vendor.gralloc.device=display
+# The DECON can't read the GPU's compressed layouts
+vendor.gralloc.scanout_linear=true
+ro.opengles.version=196609
+ro.surface_flinger.supports_background_blur=1
+
+# SoC
+ro.soc.manufacturer=Samsung
+ro.soc.model=Exynos 850

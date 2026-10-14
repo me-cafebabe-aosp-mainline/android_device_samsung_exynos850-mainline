@@ -1,0 +1,13 @@
+#
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Restorecon of /sys takes several seconds on the Cortex-A55 cores when
+# done from a single thread, so spread it and the uevent handling out
+parallel_restorecon enabled
+parallel_ueventd_main_loop enabled
+
+# The composer controls the panel backlight
+/sys/class/backlight/*	brightness	0664	system	system
+/sys/class/backlight/*	bl_power	0664	system	system
