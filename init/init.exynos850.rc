@@ -7,8 +7,15 @@ import /vendor/etc/init/hw/init.mainline.rc
 
 # Mount
 on fs
+    mkdir /mnt/vendor/efs 0771 root root
+
     # Mount everything that does not require fsck
     mount_all --early
+
+# Wi-Fi
+on post-fs
+    # Factory MAC address, read by the driver when Wi-Fi is first enabled
+    copy /mnt/vendor/efs/wifi/.mac.info /sys/module/scsc_wlan/parameters/mac_addr
 
 on late-fs
     # Mount RW partitions which need run fsck

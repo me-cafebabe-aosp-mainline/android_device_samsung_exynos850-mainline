@@ -9,6 +9,9 @@
 # Cache
 /dev/block/by-name/cache /cache ext4 nodev,noatime,nosuid,discard check,formattable
 
+# EFS, read-only: only the factory Wi-Fi MAC address is read from it
+/dev/block/by-name/efs /mnt/vendor/efs ext4 ro,noatime,nosuid,nodev wait
+
 # Logical partitions
 odm /odm ext4 noatime,ro wait,logical,first_stage_mount
 product /product ext4 noatime,ro wait,logical,first_stage_mount

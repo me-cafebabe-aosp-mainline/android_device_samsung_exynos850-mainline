@@ -51,3 +51,17 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/firmware/td4150_a21s.bin:$(TARGET_COPY_OUT_RAMDISK)/lib/firmware/td4150_a21s.bin \
     $(DEVICE_PATH)/firmware/td4150_a21s.bin:$(TARGET_COPY_OUT_RECOVERY)/root/lib/firmware/td4150_a21s.bin
+
+# Wi-Fi firmware
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/firmware/scsc/mx140.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/scsc/mx140.bin \
+    $(DEVICE_PATH)/firmware/scsc/mx140_wlan.hcf:$(TARGET_COPY_OUT_VENDOR)/firmware/scsc/mx140_wlan.hcf \
+    $(DEVICE_PATH)/firmware/scsc/mx140_wlan_sw.hcf:$(TARGET_COPY_OUT_VENDOR)/firmware/scsc/mx140_wlan_sw.hcf \
+    $(DEVICE_PATH)/firmware/scsc/slsi_reg_database.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/scsc/slsi_reg_database.bin
+
+# Wi-Fi supplicant
+TARGET_HOSTAPD_AND_WPA_SUPPLICANT_FORM := apex-mainline_common
+$(call soong_config_set_string_list,mainline_common_apex_wpa_supplicant,include_prebuilts, \
+    wpa_supplicant.conf.prebuilt \
+    //$(DEVICE_PATH):wpa_supplicant_overlay.conf.exynos850 \
+    //$(DEVICE_PATH):p2p_supplicant_overlay.conf.exynos850)

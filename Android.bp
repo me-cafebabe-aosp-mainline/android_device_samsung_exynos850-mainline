@@ -5,3 +5,20 @@
 
 soong_namespace {
 }
+
+// Wi-Fi supplicant overlays, included in the mainline_common supplicant APEX
+prebuilt_etc {
+    name: "wpa_supplicant_overlay.conf.exynos850",
+    src: "configs/wifi/wpa_supplicant_overlay.conf",
+    filename: "wpa_supplicant_overlay.conf",
+    relative_install_path: "wifi",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "p2p_supplicant_overlay.conf.exynos850",
+    src: "configs/wifi/p2p_supplicant_overlay.conf",
+    filename: "p2p_supplicant_overlay.conf",
+    relative_install_path: "wifi",
+    installable: false,
+}
