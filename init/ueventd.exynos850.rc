@@ -11,3 +11,6 @@ parallel_ueventd_main_loop enabled
 # The composer controls the panel backlight
 /sys/class/backlight/*	brightness	0664	system	system
 /sys/class/backlight/*	bl_power	0664	system	system
+
+# The Bluetooth HAL unblocks Bluetooth through rfkill
+/dev/rfkill	0660	root	bluetooth
